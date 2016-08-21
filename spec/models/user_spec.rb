@@ -98,6 +98,30 @@ RSpec.describe User, :type => :model do
     end
   end
 
+  describe 'available nearby' do
+    let!(:zone) { create :ride_zone }
+    let!(:other_zone) { create :ride_zone }
+    let!(:empty_zone) { create :ride_zone }
+    let!(:dnotavailable) { create :driver_user, latitude: 35, longitude: -122, ride_zone: zone, available: false }
+    let!(:dotherzeon) { create :driver_user, latitude: 35, longitude: -122, ride_zone: other_zone, available: true }
+    let!(:d1) { create :driver_user, latitude: 35.1, longitude: -122.1, ride_zone: zone, available: true }
+    let!(:d2) { create :driver_user, latitude: 35.5, longitude: -122.4, ride_zone: zone, available: true }
+    let!(:d3) { create :driver_user, latitude: 35.2, longitude: -122.2, ride_zone: zone, available: true }
+    let!(:d4) { create :driver_user, latitude: 35.3, longitude: -122.3, ride_zone: zone, available: true }
+
+    it 'returns empty if no drivers' do
+      expect(User.available_nearby_drivers(empty_zone.id, 35, -122, 10, 100)).to  eq([])
+    end
+
+    it 'returns ordered set of drivers with limit' do
+      expect(User.available_nearby_drivers(zone.id, 35, -122, 3, 100)).to eq([d1, d3, d4])
+    end
+
+    it 'checks radius' do
+      expect(User.available_nearby_drivers(zone.id, 35, -122, 3, 0.1)).to eq([])
+    end
+  end
+
   it 'should allow no role' do
     expect( build(:user) ).to be_valid
   end

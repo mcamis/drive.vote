@@ -1,0 +1,248 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyAu8lEPdQqG0pLMj49uwLVli32zwEd0afQ&query=to%20tcity%20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - maps.googleapis.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 21 Aug 2016 21:58:08 GMT
+      Expires:
+      - Sun, 21 Aug 2016 22:03:08 GMT
+      Cache-Control:
+      - public, max-age=300
+      Vary:
+      - Accept-Language
+      Server:
+      - pablo
+      Content-Length:
+      - '2680'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="35,34,33,32,31,30"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "html_attributions" : [],
+           "results" : [
+              {
+                 "formatted_address" : "US-13 BUS, Fruitland, MD 21826, United States",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 38.32037649999999,
+                       "lng" : -75.6221054
+                    },
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 38.32053025,
+                          "lng" : -75.62102540000001
+                       },
+                       "southwest" : {
+                          "lat" : 38.31991524999999,
+                          "lng" : -75.6224654
+                       }
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+                 "id" : "ff35be4a393baccf117304158fa730872b26ae8a",
+                 "name" : "Top City",
+                 "opening_hours" : {
+                    "open_now" : false,
+                    "weekday_text" : []
+                 },
+                 "photos" : [
+                    {
+                       "height" : 4320,
+                       "html_attributions" : [
+                          "\u003ca href=\"https://maps.google.com/maps/contrib/108692224979812372914/photos\"\u003eKeith Johnson\u003c/a\u003e"
+                       ],
+                       "photo_reference" : "CoQBcwAAALt8v-nAKadjr2usCVOAVKGlLgofhMVAzVddaSdNH6qTXDTi7yXMB1zZVmpW8iriHIff9hQt21_jM2pFvlpEjovzvqut9QzoNoc7SZZzKm-h90MwWKTaBLwl4-y41cFZ6J28E4_2L-4yGYPjEyq8IP6lNtRdYRdYKJFX7LdGq5SUEhCByekyt7NTixmEqGHjOVL1GhQ2ikxK6B3Mnr9jlwLqDfXp-KmFLQ",
+                       "width" : 2432
+                    }
+                 ],
+                 "place_id" : "ChIJu3Uh7Z0GuYkR-p33N7IrdFg",
+                 "reference" : "CmRbAAAA9shIVSRttoMIh05yTO2LgOJmZFWwmZZ2K_mKbJT059Ns-Ny7i35ZVPvsIwmtJ2xapCcvjPbqqMFKDxuoXZCGQAkpT7itCvvZmZVgKSmIlH7TBvoOFTEcKyMAqQVSxDH8EhBNeNffkSFTKIgBg4f8QYpwGhSma5kEPSeZEUh3mxi34xC1V0h_Ng",
+                 "types" : [ "car_repair", "store", "point_of_interest", "establishment" ]
+              },
+              {
+                 "formatted_address" : "2970 N Dupont Hwy, Dover, DE 19901, United States",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 39.1959509,
+                       "lng" : -75.549277
+                    },
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.19607795,
+                          "lng" : -75.5491277
+                       },
+                       "southwest" : {
+                          "lat" : 39.19556975,
+                          "lng" : -75.54972489999999
+                       }
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+                 "id" : "2c62e27c9a2849894cac2b31bee572dfaf12adc3",
+                 "name" : "Top City Inc",
+                 "opening_hours" : {
+                    "open_now" : false,
+                    "weekday_text" : []
+                 },
+                 "photos" : [
+                    {
+                       "height" : 298,
+                       "html_attributions" : [
+                          "\u003ca href=\"https://maps.google.com/maps/contrib/108324272464957234004/photos\"\u003eTop City Inc\u003c/a\u003e"
+                       ],
+                       "photo_reference" : "CoQBcwAAAB0OAXTgxv_dZMz_RR4XCAI2-MA3ozLu01hOPq1nl5Z3IWWuJ1y0kq_WB7KQcpcCA8jn6jIO9RmS6A3v44m1u-T50aghIx6Hc1cay9cy4Kyyfdiqvld9j2max80FQANa2ZLpQ1CbDRo7G7q98bY6q87zWPO4oSrMiLTKN0-fwf96EhCSzXDFX7dQQQyqJFVTpd46GhS9EdsZu7cn_fx7SiIQSjPdqBfDAQ",
+                       "width" : 960
+                    }
+                 ],
+                 "place_id" : "ChIJd6W2Ih57x4kR2TLb1mUPCkQ",
+                 "reference" : "CmRfAAAAgkcNs3vEMNgCG4uABRGsY91JsM8PhKoOtPW43qwL3S2-9KRgz5xGkG2d0z9eOtAbhMs_lMrpbCu4py1XCDMy7yCVkQZVOo_0zYt-RRsmD1P4Af3hZv4y_L94rwTi6zy7EhA93b1gIFmjNBi9pEeMMJChGhQgmAqpy9SWzz6xJ102Px2gciao3w",
+                 "types" : [
+                    "storage",
+                    "car_repair",
+                    "store",
+                    "point_of_interest",
+                    "establishment"
+                 ]
+              },
+              {
+                 "formatted_address" : "779 Pulaski Hwy, Bear, DE 19701, United States",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 39.6426335,
+                       "lng" : -75.64397219999999
+                    },
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.64277925,
+                          "lng" : -75.64357290000001
+                       },
+                       "southwest" : {
+                          "lat" : 39.64219625,
+                          "lng" : -75.64410529999999
+                       }
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+                 "id" : "8dc0d92be93b25a07fecd6904a4dc7dab9201e72",
+                 "name" : "Top City",
+                 "place_id" : "ChIJWSDKqrgGx4kRelrYf1AtznY",
+                 "reference" : "CmRbAAAAJrkRrnax58svkaUlh8pe9H0OSj7FD6YyXKKf0eJeHbmQFtYQutwhmnTlGfqGlaFVPX4OrT-ThKktQjEo1XBViGsV2EKa3GopV8qw3qicte42EB9qSjEbgflugDRXQ73AEhCO8RR82__Dtn9eU-L1z_woGhRtip4e0MdgdbT5WtKBRVHe1aGriw",
+                 "types" : [ "store", "point_of_interest", "establishment" ]
+              },
+              {
+                 "formatted_address" : "US-13, Laurel, DE 19956, United States",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 38.5516574,
+                       "lng" : -75.55662579999999
+                    },
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 38.5516577,
+                          "lng" : -75.55640529999999
+                       },
+                       "southwest" : {
+                          "lat" : 38.5516565,
+                          "lng" : -75.55669929999999
+                       }
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+                 "id" : "372af7df779bb35cfa31769a44d89efa94372268",
+                 "name" : "Top City",
+                 "opening_hours" : {
+                    "open_now" : false,
+                    "weekday_text" : []
+                 },
+                 "place_id" : "ChIJa1ZPguH6uIkRKKqntl9owq0",
+                 "reference" : "CmRcAAAACeRAe4cD6RRkpeXbWNq7CbvUDxJT0RhM-7416MbyCZo1bDjb8w3Vikhpz3jkxSgiSTWLZG2vqud9Skd0tJMYR50aesKaIa4okjjUownOoz_isqwmZHLlJMmj6oaFQddREhC3CjYzuoySKTuPLpHusLbaGhR0gnF9mNC_YtPky5nnh_B0wRAMvA",
+                 "types" : [ "car_repair", "store", "point_of_interest", "establishment" ]
+              },
+              {
+                 "formatted_address" : "500 PA-61, Orwigsburg, PA 17961, United States",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 40.6427486,
+                       "lng" : -76.11341200000001
+                    },
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 40.64281819999999,
+                          "lng" : -76.11315939999999
+                       },
+                       "southwest" : {
+                          "lat" : 40.6426922,
+                          "lng" : -76.1134962
+                       }
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png",
+                 "id" : "71dd39c772731f01a0f79259cb683059c4ccb996",
+                 "name" : "Top City",
+                 "opening_hours" : {
+                    "open_now" : false,
+                    "weekday_text" : []
+                 },
+                 "place_id" : "ChIJn-cXQ7TpxYkRmz7aDjLfmjY",
+                 "reference" : "CmRbAAAAYOxTqX4KFQ7tjmF6-fbBMl7vgQW3aEdhAtpwasrQCQ34X2cMMs-AQHMgXn8Lb_oe1hIy03HKUThYUrN5HXWx2r1pg3dCNnsP0IuQHD6KlV4OJF-oGbDHdiKVle2YRUs1EhCbzfCfRChx_3yui_fHnCVtGhTuMHIBBUtTac0iVoH8ag6S6eAmAw",
+                 "types" : [ "store", "point_of_interest", "establishment" ]
+              },
+              {
+                 "formatted_address" : "1225 SW Hillsdale St, Topeka, KS 66604, United States",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 39.04435100000001,
+                       "lng" : -95.729671
+                    },
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.04435115,
+                          "lng" : -95.72920645000001
+                       },
+                       "southwest" : {
+                          "lat" : 39.04435095000001,
+                          "lng" : -95.72982585
+                       }
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+                 "id" : "2e0497c2712f6eda9d529d5c029b343a7d001b1e",
+                 "name" : "Top City Twisters",
+                 "place_id" : "ChIJJziJWZ0Cv4cRrnAQaVIqwDY",
+                 "reference" : "CnRkAAAA_4jH0PxU6XaE5r1Q2WprsZdgeLdBlpOBCUrFmS_1OugMNXOmijdafccEp89WgKcEB2ijQ0x4LuRCXF7S4YCHS_G_hTb8gTd1Y_6t1yRlk1o11p9JOQlpJrMK7peuUN89q2e3egpSNTdzOglipKdMHxIQf3ZYLiVoHHfGJsjkpK27UxoUInIqQxsW-CjJS8S-fuRsm98oNKo",
+                 "types" : [ "point_of_interest", "establishment" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 21 Aug 2016 21:58:08 GMT
+recorded_with: VCR 3.0.3

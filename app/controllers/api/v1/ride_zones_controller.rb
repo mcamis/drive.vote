@@ -1,6 +1,8 @@
 module Api::V1
   class RideZonesController < Api::ApplicationController
     include RideParams
+    MAX_NEARBY_DRIVERS = 10
+    NEARBY_RADIUS = 5 #todo: ride-zone-specific
 
     before_action :find_ride_zone
 
@@ -27,6 +29,16 @@ module Api::V1
 
     def drivers
       render json: {response: @ride_zone.drivers.map(&:api_json)}
+    end
+
+    def available_nearby_drivers
+      if params[:latitude].blank? || params[:longitude].blank?
+        render json: {error: 'missing parameters'}, status: :bad_request
+      else
+        drivers = User.available_nearby_drivers(@ride_zone.id, params[:latitude], params[:longitude],
+                                                MAX_NEARBY_DRIVERS, NEARBY_RADIUS)
+        render json: {response: drivers.map(&:api_json)}
+      end
     end
 
     def assign_ride

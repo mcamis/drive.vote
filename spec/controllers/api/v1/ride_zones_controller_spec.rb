@@ -125,6 +125,37 @@ RSpec.describe Api::V1::RideZonesController, :type => :controller do
     end
   end
 
+  describe 'nearby drivers' do
+    let!(:rz) { create :ride_zone }
+
+    before :each do
+      allow(User).to receive(:available_nearby_drivers).and_return([])
+    end
+
+    it 'is successful' do
+      get :available_nearby_drivers, params: {id: rz.id, latitude: 34, longitude: -122}
+      expect(response).to be_successful
+    end
+
+    it 'returns driver for ride zone' do
+      d = create :driver_user, ride_zone: rz
+      expect(User).to receive(:available_nearby_drivers).and_return([d])
+      get :available_nearby_drivers, params: {id: rz.id, latitude: 34, longitude: -122}
+      resp = JSON.parse(response.body)['response']
+      expect(resp).to match_array([d.api_json.as_json])
+    end
+
+    it 'complains missing lat' do
+      get :available_nearby_drivers, params: {id: rz.id, longitude: -122}
+      expect(response.status).to eq(400)
+    end
+
+    it 'complains missing long' do
+      get :available_nearby_drivers, params: {id: rz.id, latitude: 34}
+      expect(response.status).to eq(400)
+    end
+  end
+
   describe 'rides' do
     let!(:rz) { create :ride_zone }
     let!(:r_incomplete) { create :ride, ride_zone: rz }

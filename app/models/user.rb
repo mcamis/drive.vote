@@ -11,7 +11,9 @@ class User < ApplicationRecord
   rolify after_add: :if_driver_remove_unassigned, after_remove: :make_unassigned
 
   geocoded_by :full_address
-  after_validation :geocode , if: ->(obj){ obj.new_record? }
+  after_validation :geocode , if: ->(obj){ obj.new_record? && obj.latitude.nil? && obj.longitude.nil? }
+
+  include Nearby
 
   def is_a_driver?
     RideZone.find_roles(:driver, self).present?
@@ -70,6 +72,12 @@ class User < ApplicationRecord
     Ride.where(driver_id: self.id).or(Ride.where(voter_id: self.id)).where(status: Ride.active_statuses).first
   end
 
+  # return up to limit drivers near the specified location
+  def self.available_nearby_drivers ride_zone_id, latitude, longitude, limit, radius
+    user_ids = UsersRoles.where(role: Role.where(name: :driver, resource_type: 'RideZone', resource_id: ride_zone_id)).pluck(:user_id)
+    self.filter_nearby(User.where(id: user_ids, available: true), latitude, longitude, limit, radius)
+  end
+
   def recent_complete_ride
     self.rides.merge(Ride.completed).order('updated_at desc').first
   end
@@ -102,6 +110,13 @@ class User < ApplicationRecord
     !has_required_fields?
   end
 
+  def nearby_latitude
+    self.latitude
+  end
+
+  def nearby_longitude
+    self.longitude
+  end
 
   private
 

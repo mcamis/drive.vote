@@ -8,6 +8,7 @@ class Conversation < ApplicationRecord
 
   before_save :update_status_and_lifecycle
   before_save :note_status_update
+  before_save :geocode_addresses
 
   after_create :notify_creation
   around_save :notify_update
@@ -111,6 +112,31 @@ class Conversation < ApplicationRecord
     was_new = new_record?
     yield
     self.ride_zone.event(:conversation_changed, self) if !was_new && self.ride_zone
+  end
+
+  def geocode_addresses
+    if !self.from_address.blank? && !self.from_city.blank? && (self.from_address_changed? || self.from_city_changed? || self.from_state_changed?)
+      # don't re-search if we just searched and set these fields
+      if !self.from_latitude_changed? && !self.from_longitude_changed?
+        addr = "#{self.from_address} #{self.from_city} #{self.from_state.blank? ? self.ride_zone.state : self.from_state}"
+        results = GooglePlaces.search(addr)
+        if results.count == 1
+          self.from_latitude = results.first['geometry']['location']['lat']
+          self.from_longitude = results.first['geometry']['location']['lng']
+        end
+      end
+    end
+    if !self.to_address.blank? && !self.to_city.blank? && (self.to_address_changed? || self.to_city_changed? || self.to_state_changed?)
+      # don't re-search if we just searched and set these fields
+      if !self.to_latitude_changed? && !self.to_longitude_changed?
+        addr = "#{self.to_address} #{self.to_city} #{self.to_state.blank? ? self.ride_zone.state : self.to_state}"
+        results = GooglePlaces.search(addr)
+        if results.count == 1
+          self.to_latitude = results.first['geometry']['location']['lat']
+          self.to_longitude = results.first['geometry']['location']['lng']
+        end
+      end
+    end
   end
 
   def check_ride_attached

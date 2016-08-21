@@ -153,7 +153,7 @@ RSpec.describe ConversationBot do
       reply = create :message, conversation: convo, body: 'fake address'
       expect(ConversationBot.new(convo, reply).response).to eq(I18n.t(:confirm_address, locale: :en, address: '100 Main, Cleveland'))
       expect(convo.reload.lifecycle).to eq('have_origin')
-      expect(convo.from_address).to eq('100 Main, Cleveland')
+      expect(convo.from_address).to eq('100 Main')
       expect(convo.from_city).to eq('Cleveland')
       expect(convo.from_latitude).to eq(1)
       expect(convo.from_longitude).to eq(2)
@@ -203,7 +203,7 @@ RSpec.describe ConversationBot do
       reply = create :message, conversation: convo, body: 'fake address'
       expect(ConversationBot.new(convo, reply).response).to eq(I18n.t(:confirm_address, locale: :en, address: '100 Main, Cleveland'))
       expect(convo.reload.lifecycle).to eq('have_destination')
-      expect(convo.to_address).to eq('100 Main, Cleveland')
+      expect(convo.to_address).to eq('100 Main')
       expect(convo.to_city).to eq('Cleveland')
       expect(convo.to_latitude).to eq(3)
       expect(convo.to_longitude).to eq(4)

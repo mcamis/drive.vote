@@ -58,6 +58,49 @@ RSpec.describe Conversation, type: :model do
     end
   end
 
+  describe 'geocoding address' do
+    let(:user) { create :user }
+
+    let(:good_geocode) { {'formatted_address' => '100 Main, Cleveland, OH 21921, United States', 'geometry' => {'location' => {'lat' => 3, 'lng' => 4}} } }
+
+    before :each do
+      allow(GooglePlaces).to receive(:search).and_return([good_geocode])
+    end
+
+    it 'geocodes from' do
+      c = create :conversation, user: user, from_address: '100 Main', from_city: 'Cleveland', from_state: 'OH',
+                 to_address: '100 Main', to_city: 'Cleveland', to_state: 'OH'
+      expect(c.reload.from_latitude).to eq(3)
+      expect(c.reload.from_longitude).to eq(4)
+      expect(c.reload.to_latitude).to eq(3)
+      expect(c.reload.to_longitude).to eq(4)
+    end
+
+    it 'does not geocode with missing data' do
+      expect(GooglePlaces).to_not receive(:search)
+      c = create :conversation, user: user, from_address: '100 Main'
+      c = create :conversation, user: user, from_city: 'Cleveland'
+      c = create :conversation, user: user, to_address: '100 Main'
+      c = create :conversation, user: user, to_city: 'Cleveland'
+    end
+
+    it 'does not geocode without changes' do
+      c = create :conversation, user: user, from_address: '100 Main', from_city: 'Cleveland', from_state: 'OH'
+      expect(GooglePlaces).to_not receive(:search)
+      c.update_attribute(:status, :help_needed)
+    end
+
+    %i(from_address from_city from_state to_address to_city to_state).each do |field|
+      it "does geocode with #{field} changes" do
+        c = create :conversation, user: user, from_address: '100 Main', from_city: 'Cleveland', from_state: 'OH',
+                   to_address: '100 Main', to_city: 'Cleveland', to_state: 'OH'
+        expect(GooglePlaces).to receive(:search).and_return([good_geocode])
+        c.update_attribute(field, 'XX')
+      end
+    end
+
+  end
+
   describe 'new conversation from staff' do
     let(:rz) { create :ride_zone }
     let(:user) { create :driver_user, ride_zone: rz }

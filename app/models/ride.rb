@@ -18,6 +18,7 @@ class Ride < ApplicationRecord
   before_save :close_conversation_when_complete
 
   include HasAddress
+  include Nearby
 
   # create a new ride from the data in a conversation
   def self.create_from_conversation conversation
@@ -91,19 +92,8 @@ class Ride < ApplicationRecord
 
   # return up to limit Rides near the specified location
   def self.waiting_nearby ride_zone_id, latitude, longitude, limit, radius
-    rides = Ride.where(ride_zone_id: ride_zone_id, status: :waiting_assignment).to_a
-    pt = Geokit::LatLng.new(latitude, longitude)
-    rides.map do |ride|
-      ride_pt = Geokit::LatLng.new(ride.from_latitude, ride.from_longitude)
-      dist = pt.distance_to(ride_pt)
-      if dist < radius
-        [dist, ride]
-      else
-        nil
-      end
-    end.compact.sort do |a, b|
-      a[0] <=> b[0]
-    end.map {|pair| pair[1]}[0..limit-1]
+    rides = Ride.where(ride_zone_id: ride_zone_id, status: :waiting_assignment)
+    self.filter_nearby(rides, latitude, longitude, limit, radius)
   end
 
   def self.active_statuses
@@ -113,6 +103,13 @@ class Ride < ApplicationRecord
   def passenger_count
     # always include Voter as a passenger
     self.additional_passengers + 1
+  end
+
+  def nearby_latitude
+    self.from_latitude
+  end
+  def nearby_longitude
+    self.from_longitude
   end
 
   private

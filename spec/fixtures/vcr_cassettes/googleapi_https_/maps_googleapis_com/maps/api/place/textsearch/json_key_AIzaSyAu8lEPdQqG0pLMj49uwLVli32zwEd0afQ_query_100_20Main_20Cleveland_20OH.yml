@@ -1,0 +1,181 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyAu8lEPdQqG0pLMj49uwLVli32zwEd0afQ&query=100%20Main%20Cleveland%20OH
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - maps.googleapis.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 21 Aug 2016 22:19:49 GMT
+      Expires:
+      - Sun, 21 Aug 2016 22:24:49 GMT
+      Cache-Control:
+      - public, max-age=300
+      Vary:
+      - Accept-Language
+      Server:
+      - pablo
+      Content-Length:
+      - '2348'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="35,34,33,32,31,30"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "html_attributions" : [],
+           "results" : [
+              {
+                 "formatted_address" : "W 100th St, Cleveland, OH, USA",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 41.4670198,
+                       "lng" : -81.75318229999999
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+                 "id" : "3c0b8c10e796f3a57707fa96a72472f73b0f7550",
+                 "name" : "West 100th Street",
+                 "place_id" : "ChIJOZq-EN_xMIgRIOoFWTHo_Js",
+                 "reference" : "CoQBewAAAJj298l7JD3aYnD_sS9gSWsIIxw-eL7-Z7V7OE-JNuH3vxUPsYIvggjWBaXtQDRlMV_5lZpceMTtuRhgFHAk7unM5gB5_3PyTZw2pakI9Sb0fMpzUlkW3eEu4Y3qUtb68hPhX9AQUMBYbzbU3RfC0t0cBT8bvpbAu8FZdwPRvgdeEhCbx1LBfBrR47Mdy4ja0Vc2GhRAD3uSCGFXPv0ICdkqAgoPFJDpPQ",
+                 "types" : [ "route" ]
+              },
+              {
+                 "formatted_address" : "E 100th St, Cleveland, OH 44106, USA",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 41.49904300000001,
+                       "lng" : -81.61833399999999
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+                 "id" : "fb78fe6863bcd77bce38bf1723d0e6c3a56cac14",
+                 "name" : "East 100th Street",
+                 "place_id" : "ChIJt1zzQpz7MIgRydhaZs-z9OM",
+                 "reference" : "CpQBgQAAAB201375qDLvkVQv0xHzudw5_HNKZWAM7-aDJp4RFwWUGBJ25QmFApmz0VBO1C-VinGOOWtLADR-nBLfP7zKCzl162R2f5fXCSINEQBRthyxsBEAe7pbkbYkn1s0zJsvk-e1WN2hQUVk__7Kz2Ds7S3ZPD4cHWYjn1pi2UjFAlRie6xD_JnHMUyCa7QbjDNdYRIQNDaGQdWUjm4KUiHjycYTuxoUe-e79fbjpQKfmvfbKw1qgUWF0-4",
+                 "types" : [ "route" ]
+              },
+              {
+                 "formatted_address" : "E 100th St, Cleveland, OH 44105, USA",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 41.446837,
+                       "lng" : -81.6147994
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+                 "id" : "91611bf9f182821a9c5ee2f4e18df42cf42a4391",
+                 "name" : "East 100th Street",
+                 "place_id" : "ChIJfxpTLrDkMIgR2vz_4ke9kdQ",
+                 "reference" : "CpQBgQAAAM4mg5xym2qUVqrhczzSDxCRgnGDageF81o3wy_8E-mwb5ZCfcGKrs0gGsxDMJR37fOBx0BrrBiCz668MYe7V5OV5FEGabQwDmFTo2NlRMUVD0sl-mW3vKGhMKREVrzve7EDXvrHJ2Qhd5QACaKZCtvnv6I6EX_Rxp0Y1qMv05xm080GprF8AxxbjbIIZl7j0xIQ4L5es8iJvb30Zw7EPDw5QBoU71Tj7LJI4LnDx1Te4P6B-5gAJ3M",
+                 "types" : [ "route" ]
+              },
+              {
+                 "formatted_address" : "E 100th St, Cleveland, OH 44108, USA",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 41.5356144,
+                       "lng" : -81.61963969999999
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+                 "id" : "14248dfe9f4e9081930b3f2c85b86d9ecd746861",
+                 "name" : "East 100th Street",
+                 "place_id" : "ChIJ7eTIslj5MIgRfb71Y0_z2wc",
+                 "reference" : "CpQBgQAAAIEA7PXR9S2ExAT7OUVVXMbf8Pa49U4z470iNdHBL_CYeUvSFaDc2Eor109gdIitkHXvOH4_snIqTkwpZ8fENNyT4tNUF2DKrqx_nufsim7jJL8r-p2Z7v2RtD2qjgp9t8Mf8KMldM2OVphKgAxX8Lg6dmKqaCGhvAvnas6mxLjXx4R4KM_2CUOe-up_3sgJ3xIQelE9c6x3qv5SmXyQB7NhsxoUcnn3esFUJwLklCEPGNHk9vb8Rcc",
+                 "types" : [ "route" ]
+              },
+              {
+                 "formatted_address" : "E 100th St, Cleveland, OH 44104, USA",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 41.4806857,
+                       "lng" : -81.61529659999999
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+                 "id" : "7da77e76abef6e47f81359f9839abd1ab5f3f5b4",
+                 "name" : "East 100th Street",
+                 "place_id" : "ChIJw-4Gb2_7MIgRkpYQEN8sRu8",
+                 "reference" : "CpQBgQAAAIa7hrQcKEF3O8IE_D1lEfhQimdng-0DKovu5saQn545yfzRrt73nctCZIh4wggUgXl2KjTQM5VGspmafsRLD7h6Nlto_hFFAizBtOodCw9ZtXbby02IrcoztC3Toxrc4bPloJ4_s78tFiBb1kQLo36k1UtGfHzV_-GoFrqfn9aWFFP8DmVL9nXgy53CHTNTHRIQpeXadfnY-0dvdloNAAPuShoU6nwC3k--cWQKpYODrTI4jbWnwPc",
+                 "types" : [ "route" ]
+              },
+              {
+                 "formatted_address" : "100 Cleveland St, Elyria, OH 44035, USA",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 41.37339670000001,
+                       "lng" : -82.0936521
+                    },
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 41.37364765000001,
+                          "lng" : -82.093278
+                       },
+                       "southwest" : {
+                          "lat" : 41.37264385,
+                          "lng" : -82.09377680000001
+                       }
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+                 "id" : "0a82df191227d887af175b8926778a816e767045",
+                 "name" : "100 Cleveland St",
+                 "place_id" : "ChIJKVtVagOZMIgR6ITIxDSwNys",
+                 "reference" : "CpQBhQAAACqaVY66sO4fqzfqOZ6E6V-ScC99qR3sbXsFyoflr2n1Jlv8EL37Jpa0DVJxvS_HoWh5i6dj-mnrlhftByQh0lr2ZYxmi3mv9HLyhyM2BLoG81ijmKzw01HU3YjZSV54-piZmCZmeFRwfVNt1mUmUsG12wToH4TOmwohMkDo00kC6LogHanI0vG9hp_XRgUCxhIQON5DhzYfvCKyrzdHDHvnEBoUUjLMaOx0dx_U1mRW3RE9Lm6SLMw",
+                 "types" : [ "premise" ]
+              },
+              {
+                 "formatted_address" : "100 Main St, Cloverdale, OH 45827, USA",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 41.102844,
+                       "lng" : -84.131462
+                    },
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 41.1028458,
+                          "lng" : -84.13127915
+                       },
+                       "southwest" : {
+                          "lat" : 41.1028434,
+                          "lng" : -84.13152295
+                       }
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/geocode-71.png",
+                 "id" : "199de85d9ebd2e0a24bf0dd41853c39ed250f318",
+                 "name" : "100 Main St",
+                 "place_id" : "ChIJl7wzvu-CPogROvScGqZA6nE",
+                 "reference" : "CpQBhAAAANazIs-jmNLZN2o3sEphoHgJExbhV5VB5VuCy1KGH1dhhxX3S945G3GVpS31_6mI7fgCHq8c5njLfCpt9ka-1Xehn9w46qgBbzM-odWdAPicf8iyMO1wzQVljvC3rP1_8AjCxL_7_lTouR86Wxho2Xs-5Sy_NQEnGyDQqH9srDn6wNalDtnvWOjqRl0od1_GYBIQnLEYfAnOjYOI3cOJLZLrDBoUnoYOXn1Vl_n8EzbwgHio2mKXKlQ",
+                 "types" : [ "street_address" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 21 Aug 2016 22:19:49 GMT
+recorded_with: VCR 3.0.3

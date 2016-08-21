@@ -68,6 +68,7 @@ Rails.application.routes.draw do
           get 'conversations' => 'ride_zones#conversations'
           post 'conversations' => 'ride_zones#create_conversation'
           get 'drivers' => 'ride_zones#drivers'
+          get 'available_nearby_drivers' => 'ride_zones#available_nearby_drivers'
           post 'assign_ride' => 'ride_zones#assign_ride'
           get 'rides' => 'ride_zones#rides'
           post 'rides' => 'ride_zones#create_ride'

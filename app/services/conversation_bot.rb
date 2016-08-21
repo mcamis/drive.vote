@@ -250,14 +250,27 @@ class ConversationBot
           formatted = result['formatted_address'].sub(/, USA|, United States/, '')
           st_zip_matcher = formatted.match(/, ([A-Z]{2}) ([0-9-]*)\z/)
           city_matcher = formatted.match(/, (.*), ([A-Z]{2}) ([0-9-]*)\z/)
-          formatted = formatted.sub(/#{st_zip_matcher}/, '') if st_zip_matcher
-          @conversation.send("#{from_or_to}_address=".to_sym, formatted)
+          # keep city in the confirmation message
+          confirm = if st_zip_matcher
+                      formatted.sub(/#{st_zip_matcher}/, '')
+                    else
+                      formatted
+                    end
+          # remove city from address line if we found it
+          addr = if city_matcher
+                   formatted.sub(/#{city_matcher}/, '')
+                 elsif st_zip_matcher
+                   formatted.sub(/#{st_zip_matcher}/, '')
+                 else
+                   formatted
+                 end
+          @conversation.send("#{from_or_to}_address=".to_sym, addr)
           @conversation.send("#{from_or_to}_city=".to_sym, city_matcher[1]) if city_matcher
           @conversation.send("#{from_or_to}_latitude=".to_sym, result['geometry']['location']['lat'])
           @conversation.send("#{from_or_to}_longitude=".to_sym, result['geometry']['location']['lng'])
           name = result['name']
-          formatted = "#{name} - #{formatted}" unless name.blank?
-          @response = I18n.t(:confirm_address, locale: @locale, address: formatted)
+          confirm = "#{name} - #{confirm}" unless name.blank?
+          @response = I18n.t(:confirm_address, locale: @locale, address: confirm)
           return 0
         end
         if results.count > 1

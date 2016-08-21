@@ -1,0 +1,152 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://maps.googleapis.com/maps/api/place/textsearch/json?key=AIzaSyAu8lEPdQqG0pLMj49uwLVli32zwEd0afQ&query=from%20fcity%20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+      Host:
+      - maps.googleapis.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Sun, 21 Aug 2016 21:58:09 GMT
+      Expires:
+      - Sun, 21 Aug 2016 22:03:09 GMT
+      Cache-Control:
+      - public, max-age=300
+      Vary:
+      - Accept-Language
+      Server:
+      - pablo
+      Content-Length:
+      - '1691'
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Frame-Options:
+      - SAMEORIGIN
+      Alternate-Protocol:
+      - 443:quic
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="35,34,33,32,31,30"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+           "html_attributions" : [],
+           "results" : [
+              {
+                 "formatted_address" : "405 6th St, Sioux City, IA 51101, United States",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 42.4965879,
+                       "lng" : -96.40605619999999
+                    },
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 42.4967152,
+                          "lng" : -96.40605170000002
+                       },
+                       "southwest" : {
+                          "lat" : 42.496206,
+                          "lng" : -96.40605769999999
+                       }
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png",
+                 "id" : "d51b7dfcee0e11304af7f9629033c25856fcf509",
+                 "name" : "Sioux City Hall",
+                 "place_id" : "ChIJ7ZFZvX39jYcR5RM2Kc3WBFU",
+                 "reference" : "CnRiAAAAyfovPQoF3Lgfn5kzZujqi6CFXRG0T5-sWVARHnoBwGDvkJqzVPbrVmFuNkKQsLuMHaVbefXT91wZpzdUNbh2KJUVptyOWhyZ-PCRxq7e7yrUfLQVsNfUeOGWWoL-l9EUlRbdAPtZ8FQAW8S2KpuGYBIQr1ySvUbSAa_mYspaPHT55hoUfP2mWdRYwh798WJ_KjZW4ERBpTM",
+                 "types" : [ "local_government_office", "point_of_interest", "establishment" ]
+              },
+              {
+                 "formatted_address" : "1 City Hall Square, Boston, MA 02201, United States",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 42.360406,
+                       "lng" : -71.057993
+                    },
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 42.36049025,
+                          "lng" : -71.05715254999998
+                       },
+                       "southwest" : {
+                          "lat" : 42.36015325,
+                          "lng" : -71.05827314999999
+                       }
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/civic_building-71.png",
+                 "id" : "dd567d762a7e9440b0a4af94a088ac6e05ac3866",
+                 "name" : "Boston City Hall",
+                 "opening_hours" : {
+                    "open_now" : false,
+                    "weekday_text" : []
+                 },
+                 "photos" : [
+                    {
+                       "height" : 1131,
+                       "html_attributions" : [
+                          "\u003ca href=\"https://maps.google.com/maps/contrib/101131452347820889604/photos\"\u003eBoston City Hall\u003c/a\u003e"
+                       ],
+                       "photo_reference" : "CoQBcwAAAJSWSYriQ5haoDpM3kumXhGgJPKUIK5bWwMet-wgRpvO1dsP751pHXdtxIPXWfJjInKPsFoHk5yKG9Nb1MxuboVBguJTSwgD39G9GdD3voFuCBycpkjQQpFV6JIo9ieuxJZqc_qHOfWAcjGvkOafkzRdzb93JxUwVWch-Un2NMt3EhDG9O85607WJ2Tf1NOIVU-fGhSZHvNFtVMjMyx78DCjki1jbWZikA",
+                       "width" : 1135
+                    }
+                 ],
+                 "place_id" : "ChIJLw8wo4Vw44kRWkWR0c03LH4",
+                 "rating" : 3.6,
+                 "reference" : "CnRjAAAABWZ9vKyP_RKlF_XvZ3r8yxq2nagDfxQYiJBEr-Imp2SVGLsuCS_TWyWyWTcTSpJxJLo9hg7uK8c7Vmm-RzeBAGLwfA9dDtlDsAU2Y-sXvaEw0tpA5j5yWGXcbz97sVZ5MAMDTfiPDKpZC1H_16X5jxIQ76JzlKxxitEi1-kPX-0NvBoUikSgL9NY3wbDbNR01evmmsMqH4Y",
+                 "types" : [
+                    "city_hall",
+                    "local_government_office",
+                    "point_of_interest",
+                    "establishment"
+                 ]
+              },
+              {
+                 "formatted_address" : "215 W Pershing Rd, Kansas City, MO 64108, United States",
+                 "geometry" : {
+                    "location" : {
+                       "lat" : 39.0833358,
+                       "lng" : -94.5869488
+                    },
+                    "viewport" : {
+                       "northeast" : {
+                          "lat" : 39.08352014999999,
+                          "lng" : -94.58694655000002
+                       },
+                       "southwest" : {
+                          "lat" : 39.08327435,
+                          "lng" : -94.58695554999997
+                       }
+                    }
+                 },
+                 "icon" : "https://maps.gstatic.com/mapfiles/place_api/icons/restaurant-71.png",
+                 "id" : "aaa1f11574dd93bda290b83582121efc86e05994",
+                 "name" : "City Bakery",
+                 "permanently_closed" : true,
+                 "place_id" : "ChIJGSXfFz_wwIcR7AW6orwi034",
+                 "reference" : "CmReAAAAw6Hv695OeUvTIhRnhuzAsRMPf8cDHxYi-PhopP1gwElqz_8c3MaM5ygKeErDUTBDklznjQrx1vjUnhJ3dTjMaO4B7GD5KAm3XkH4vY33IgzSA1prGBePOFT2l26DgpCdEhBB0Y1Clv00SsP6qg6LukXYGhSGvd97yBvxJnZ5l6rly8TMCiHyzg",
+                 "types" : [ "bakery", "food", "store", "point_of_interest", "establishment" ]
+              }
+           ],
+           "status" : "OK"
+        }
+    http_version: 
+  recorded_at: Sun, 21 Aug 2016 21:58:09 GMT
+recorded_with: VCR 3.0.3
