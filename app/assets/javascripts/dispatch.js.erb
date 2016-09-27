@@ -16,6 +16,12 @@ function DispatchController(rideZoneId, mapController, botDisabled) {
     driving: 'Driving', completion_overdue: 'Completion Overdue', complete: 'Complete'
   };
 
+  this._tableByStatus = {
+    unassigned: ['waiting_assignment', 'assignment_overdue', 'scheduled'],
+    assigned: ['waiting_pickup', 'pickup_overdue', 'completion_overdue', 'driving'],
+    inactive: ['complete']
+  }
+
   this._statusPinURLs = {
     messaging: "<%= asset_path('rider-waiting-assignment.png')%>",
     help_needed: "<%= asset_path('rider-overdue-pickup.png')%>",
@@ -181,23 +187,39 @@ DispatchController.prototype = {
     var status = this.conversationStatus(c),
         rowId = 'conv-row-'+c.id,
         existing = $('#' + rowId),
-        cells = this.conversationCells(c, status);
+        cells = this.conversationCells(c, status),
+        tableIdentifier = "#conversations-"+this.tableFor(status),
+        classes = "conv-row clickable conv-status-" + status,
+        row = '<tr id="'+rowId+'" class="'+classes+'" data-cid="'+c.id+'">' + cells +'</tr>';
 
     if (existing.length > 0) {
-      existing.html(cells);
-      this.setRowStatus(existing, status);
+      var existingTable = existing.closest('.conversations-table');
+      if (existingTable.id == tableIdentifier) {
+        existing.html(cells);
+        this.setRowStatus(existing, status);
+      } else {
+        existing.remove();
+        $(tableIdentifier).prepend(row);
+      }
     } else {
-      var classes = "conv-row clickable conv-status-" + status,
-          row = '<tr id="'+rowId+'" class="'+classes+'" data-cid="'+c.id+'">' + cells +'</tr>';
-      $('#conversations').prepend(row);
+      $(tableIdentifier).prepend(row);
     }
+
     $('#' + rowId).data('objref', c);
     $("time.timeago").timeago();
     this.recalcBadges();
     return status;
   },
 
-  showConversationsWithStatuses: function (statusList) {
+  tableFor: function (status) {
+    this._tableByStatus.keys.forEach(function(tableIdentifier) {
+      if (this._tableByStatus[tableIdentifier].indexOf(status) > -1) {
+        return tableIdentifer;
+      }
+    })
+  },
+
+  showConversationsWithStatuses: function (statusList, table) {
     var toShow = (statusList == '*') ? Object.keys(this._statusStrings) : statusList.split(' '),
         all = Object.keys(this._statusStrings);
     for (var i = 0; i < all.length; ++i) {

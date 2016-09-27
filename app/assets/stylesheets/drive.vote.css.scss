@@ -145,11 +145,13 @@ h3.dispatch { margin: 0 0 0 10px; }
 }
 
 .dispatch-filters {
-  font-weight: normal;
-  font-size: 13px;
   padding: 4px 10px;
   background-color: #ddd;
   margin: 30px 0;
+  a {
+    font-weight: normal;
+    font-size: 13px;
+  }
 }
 
 #conversations {

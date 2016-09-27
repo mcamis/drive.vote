@@ -8,31 +8,35 @@
 .row
   .col-md-7
 
-    .dispatch-filters
-      = link_to 'All', '#', 'data-statuses': '*', class: 'btn-conv-filter'
-      &nbsp; · &nbsp;
-      = link_to 'Need Help', '#', 'data-statuses': 'help_needed', class: 'btn-conv-filter'
-      &nbsp; · &nbsp;
-      = link_to 'Overdue', '#', 'data-statuses': 'assignment_overdue pickup_overdue completion_overdue', class: 'btn-conv-filter'
-      &nbsp; · &nbsp;
-      = link_to 'Waiting Assign.', '#', 'data-statuses': 'waiting_assignment', class: 'btn-conv-filter'
-      &nbsp; · &nbsp;
-      = link_to 'Waiting Pickup', '#', 'data-statuses': 'waiting_pickup', class: 'btn-conv-filter'
-      &nbsp; · &nbsp;
-      = link_to 'Scheduled', '#', 'data-statuses': 'scheduled', class: 'btn-conv-filter'
-      &nbsp; · &nbsp;
-      = link_to 'Driving', '#', 'data-statuses': 'driving', class: 'btn-conv-filter'
-      &nbsp; · &nbsp;
-      = link_to 'Messaging', '#', 'data-statuses': 'messaging', class: 'btn-conv-filter'
-
-    %table.table.admin{id: 'conversations'}
+    %table.table.admin{id: 'conversations-unassigned', class: 'conversations-table'}
       %thead
         %tr
-          %th{style: 'width:5%'}
-          %th{style: 'width:20%'} Voter
-          %th{style: 'width:45%'} Last message
-          %th{style: 'width:15%'} Status
-          %th{style: 'width:15%'} Desired pickup
+          %th{colspan: 5}
+            %h4.dispatch-filters
+              Needs a ride
+              = link_to 'All', '#', 'data-statuses': 'help_needed waiting_assignment assignment_overdue scheduled', class: 'btn-conv-filter'
+              = link_to 'New', '#', 'data-statuses': 'help_needed waiting_assignment', class: 'btn-conv-filter'
+              = link_to 'Overdue', '#', 'data-statuses': 'assignment_overdue', class: 'btn-conv-filter'
+              = link_to 'Scheduled', '#', 'data-statuses': 'scheduled', class: 'btn-conv-filter'
+
+
+    %table.table.admin{id: 'conversations-assigned', class: 'conversations-table'}
+      %thead
+        %tr
+          %th{colspan: 5}
+            %h4.dispatch-filters
+              Has a driver assigned
+              = link_to 'All', '#', 'data-statuses': 'waiting_pickup pickup_overdue completion_overdue driving', class: 'btn-conv-filter'
+              = link_to 'Assigned', '#', 'data-statuses': 'waiting_pickup', class: 'btn-conv-filter'
+              = link_to 'Overdue', '#', 'data-statuses': 'pickup_overdue completion_overdue', class: 'btn-conv-filter'
+              = link_to 'Driving', '#', 'data-statuses': 'driving', class: 'btn-conv-filter'
+
+    %table.table.admin{id: 'conversations-inactive', class: 'conversations-table'}
+      %thead
+        %tr
+          %th{colspan: 5}
+            %h4
+              Inactive
 
   .col-md-5{style: 'margin-top: 15px;'}
     #dispatch-map
@@ -84,10 +88,11 @@
     });
 
     $('.btn-conv-filter').click(function(event) {
+      var $table = $(this).closest('.conversations-table');
       event.preventDefault();
-      dispatchController.showConversationsWithStatuses($(this).data('statuses'));
-      $(".btn-conv-filter" ).css( "background-color", "#ddd" );
-      $(this).css( "background-color", "#fff" );
+      dispatchController.showConversationsWithStatuses($(this).data('statuses'), $table);
+      $table.find(".btn-conv-filter" ).css( { color: "#16a085", "font-weight": "normal"} );
+      $(this).css( { color: "#000", "font-weight": "bold" } );
     });
 
     $("#conversations").on( "mouseenter", "td.ride-icon", function() {
@@ -106,4 +111,3 @@
 
     setInterval(refreshStatuses, 30000);
   });
-
