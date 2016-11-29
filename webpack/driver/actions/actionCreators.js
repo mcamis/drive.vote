@@ -113,12 +113,27 @@ export function attemptCancel() {
     }
 }
 
+export function attemptArchive() {
+    return {
+        type: 'RIDE_ARCHIVE_ATTEMPT',
+    }
+}
+
 export function cancelRideSuccess(ride) {
     return {
         type: 'RIDE_CANCELLED',
         active_ride: null
     }
 }
+
+
+export function archiveRideSuccess(ride) {
+    return {
+        type: 'RIDE_ARCHIVED',
+        active_ride: null
+    }
+}
+
 
 export function attemptPickup() {
     return {
@@ -280,6 +295,22 @@ export function cancelRide(ride) {
             .then(parseJSON)
             .then(json =>
                 dispatch(cancelRideSuccess(ride))
+            ).catch(error =>
+                dispatch(apiError(error))
+            )
+    }
+}
+
+export function archiveRide(ride) {
+    return function(dispatch) {
+        dispatch(attemptArchive());
+        fetch(`${api}/cancel?ride_id=${ride.id}`, {
+                credentials: 'include',
+                method: 'POST',
+            })
+            .then(parseJSON)
+            .then(json =>
+                dispatch(archiveRideSuccess(ride))
             ).catch(error =>
                 dispatch(apiError(error))
             )

@@ -18,6 +18,7 @@ function driverState(state = {
         case 'RIDE_CANCEL_ATTEMPT':
         case 'RIDER_PICKUP_ATTEMPT':
         case 'RIDE_COMPLETE_ATTEMPT':
+        case 'RIDE_ARCHIVE_ATTEMPT':
             return Object.assign({}, state, {
                 changePending: true
             })
@@ -68,6 +69,7 @@ function driverState(state = {
                 changePending: false,
             })
         case 'RIDE_CANCELLED':
+        case 'RIDE_ARCHIVED':
             return Object.assign({}, state, {
                 isFetching: false,
                 active_ride: null,

@@ -106,7 +106,7 @@ label {
 }
 
 .m-t-md {
-    margin-top: 2em;
+    margin-top: 2em !important;
 }
 
 .m-b {

@@ -31,9 +31,12 @@ class ActiveRide extends React.Component {
                             <p>Total Passengers: {passengers}</p>
                             <p>Special requests: {ride.special_requests}</p>
                         </div>
+                     
                         <div className="bottom-controls secondary">
                             <button className="btn btn-success btn-api" onClick={()=>this.props.pickupRider(ride)}>Rider picked up</button>
-                            <button className="btn btn-danger btn-api" onClick={()=>this.props.cancelRide(ride)}>Cancel Ride</button>
+                            <button className="btn btn-danger btn-api" onClick={()=>this.props.cancelRide(ride)}>Cancel pick up</button>
+                            <button className="btn btn-outline btn-api m-t-md" onClick={()=>this.props.archiveRide(ride)}>Archive Ride </button>
+                            <p className="text-center">Archive a ride when a rider has already voted.</p>
                         </div>     
                     </div>
                 )
@@ -62,7 +65,12 @@ class ActiveRide extends React.Component {
             default:
                 return (
                     <div className="panel panel-full p-y-sm dispatcher-match">
-                       <h2>Ride with an unknown Status!</h2>
+                       <h2>Something went wrong with this ride.</h2>
+                       <p>Please contact Dispatch for help with the ? button below</p>
+                           <div className="secondary-info">
+                            <p>Ride Name: {ride.name}</p>
+                            <p>Status: {ride.status}</p>
+                        </div>
                     </div>
                 )
         }
